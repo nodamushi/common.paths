@@ -9,7 +9,7 @@ There is only one class in this library,and the file size of this library's jar 
 
 ## Methods
 
-Please see the Javadoc for details.
+Please see the [Javadoc](https://nodamushi.github.io/common.paths/) for details.
 
 ### null correspondence
 
