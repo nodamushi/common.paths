@@ -1,7 +1,7 @@
 package nodamushi.com.github.common.paths;
 
 import static java.lang.String.format;
-import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.charset.StandardCharsets.*;
 import static java.util.Objects.requireNonNull;
 
 import java.io.BufferedInputStream;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
@@ -766,7 +767,7 @@ public class NPaths{
 
   /**
    * Open the file and create a new {@link BufferedReader}.
-   * When <code>charset</code> is UTF-8 and the BOM is found,the reader will skip the BOM.
+   * When <code>charset</code> is UTF-8/UTF-16/UTF-16BE/UTF-16LE and the BOM is found,the reader will skip the BOM.
    * @param path file paht.non null.
    * @param charset if <code>charset</code> is <code>null</code>,{@link Charset#defaultCharset()} will be used.
    * @param options options
@@ -782,7 +783,8 @@ public class NPaths{
   }
 
   /**
-   * wrap <code>input</code> with a {@link BufferedReader}
+   * wrap <code>input</code> with a {@link BufferedReader}.
+   * When <code>charset</code> is UTF-8/UTF-16/UTF-16BE/UTF-16LE and the BOM is found,the reader will skip the BOM.
    * @param inputStream input
    * @param charset if <code>charset</code> is <code>null</code>,{@link Charset#defaultCharset()} will be used.
    * @return {@link BufferedReader}
@@ -793,17 +795,22 @@ public class NPaths{
   public static BufferedReader newBufferedReader(InputStream inputStream,Charset charset)
       throws IOException,NullPointerException{
     if(charset==null)charset = Charset.defaultCharset();
-    if(charset == UTF_8){
+    byte[] skip=
+        (charset == UTF_8)?new byte[]{(byte)0xEF,(byte)0xBB,(byte)0xBF}:
+        (charset == UTF_16 || charset == UTF_16BE)?new byte[]{(byte)0xFE,(byte)0xFF}:
+        (charset == UTF_16LE)?new byte[]{(byte)0xFF,(byte)0xFE}:
+          null;
+    if(skip!=null){
       if(!inputStream.markSupported()){
         inputStream = new BufferedInputStream(inputStream);
       }
-      inputStream.mark(3);
-      byte buf[] ={0,0,0};
-      int read = inputStream.read(buf,0,3);
-      boolean bom=false;
-      if(read == 3){
-        bom = buf[0] == (byte)0xEF && buf[1] == (byte)0xBB && buf[2] == (byte)0xBF;
-      }
+      inputStream.mark(skip.length);
+      byte buf[] =new byte[skip.length];
+      int read = inputStream.read(buf,0,buf.length);
+      boolean  bom =
+            read == buf.length &&
+            buf[0]==skip[0] && buf[1] == skip[1] &&
+            ((buf.length==2) || buf[2]==skip[2]);
       if(!bom){
         inputStream.reset();
       }

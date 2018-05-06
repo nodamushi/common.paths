@@ -405,6 +405,25 @@ public class NPathsTest{
     try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM.txt"),StandardCharsets.UTF_8)){
       assertThat(r.readLine(),is("aiueo"));
     }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),StandardCharsets.UTF_16BE)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),StandardCharsets.UTF_16BE)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),StandardCharsets.UTF_16)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),StandardCharsets.UTF_16)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16LE.txt"),StandardCharsets.UTF_16LE)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16LE.txt"),StandardCharsets.UTF_16LE)){
+      assertThat(r.readLine(),is("aiueo"));
+    }
+
     if(Charset.forName("shift-jis")!=null){
       try(BufferedReader r=newBufferedReader(RESOURCES.resolve("sjis.txt"),Charset.forName("shift-jis"))){
         assertThat(r.readLine(),is("あいうえお"));
@@ -434,8 +453,14 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
+
+
     list.clear();
 
     walkFiles(RESOURCES,0,f);
@@ -443,8 +468,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
 
 
@@ -454,8 +483,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
 
     walkFiles(RESOURCES,2,f);
@@ -465,8 +498,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
 
     walkFiles(RESOURCES,3,f);
@@ -477,8 +514,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
 
 
@@ -492,8 +533,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
 
     walkFiles(RESOURCES,100,f);
@@ -506,8 +551,12 @@ public class NPathsTest{
         RESOURCES.resolve("empty.txt"),
         RESOURCES.resolve("eucjp.txt"),
         RESOURCES.resolve("noBOM.txt"),
+        RESOURCES.resolve("noBOM16BE.txt"),
+        RESOURCES.resolve("noBOM16LE.txt"),
         RESOURCES.resolve("sjis.txt"),
-        RESOURCES.resolve("withBOM.txt")));
+        RESOURCES.resolve("withBOM.txt"),
+        RESOURCES.resolve("withBOM16BE.txt"),
+        RESOURCES.resolve("withBOM16LE.txt")));
     list.clear();
   }
 
