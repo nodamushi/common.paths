@@ -170,45 +170,45 @@ public class NPathsTest{
   }
 
   @Test
-  public void testGetFileNameWithoutExtension(){
-    assertThat(getFileNameWithoutExtension(get("abc.")),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("/")),is(""));
+  public void testGetNameWithoutExtension(){
+    assertThat(getNameWithoutExtension(get("abc.")),is("abc"));
+    assertThat(getNameWithoutExtension(get("/")),is(""));
     if(isWindows()){
-      assertThat(getFileNameWithoutExtension(get("C:/test.txt")),is("test"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz")),is("abc.tar"));
-      assertThat(getFileNameWithoutExtension(get("C:\\")),is(""));
+      assertThat(getNameWithoutExtension(get("C:/test.txt")),is("test"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz")),is("abc.tar"));
+      assertThat(getNameWithoutExtension(get("C:\\")),is(""));
     }
   }
 
   @Test
-  public void testGetFileNameWithoutExtension_dotCount(){
-    assertThat(getFileNameWithoutExtension(get("abc."),1),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("abc."),2),is("abc."));
-    assertThat(getFileNameWithoutExtension(get("abc."),0),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("/"),1),is(""));
+  public void testGetNameWithoutExtension_dotCount(){
+    assertThat(getNameWithoutExtension(get("abc."),1),is("abc"));
+    assertThat(getNameWithoutExtension(get("abc."),2),is("abc."));
+    assertThat(getNameWithoutExtension(get("abc."),0),is("abc"));
+    assertThat(getNameWithoutExtension(get("/"),1),is(""));
     if(isWindows()){
-      assertThat(getFileNameWithoutExtension(get("C:/test.txt"),1),is("test"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),1),is("abc.tar"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),2),is("abc"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),3),is("abc.tar.gz"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),0),is("abc"));
-      assertThat(getFileNameWithoutExtension(get("C:\\"),1),is(""));
+      assertThat(getNameWithoutExtension(get("C:/test.txt"),1),is("test"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),1),is("abc.tar"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),2),is("abc"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),3),is("abc.tar.gz"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),0),is("abc"));
+      assertThat(getNameWithoutExtension(get("C:\\"),1),is(""));
     }
   }
 
   @Test
-  public void testGetFileNameWithoutExtension_dotCount2(){
-    assertThat(getFileNameWithoutExtension(get("abc."),1,true),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("abc."),2,true),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("abc."),0,true),is("abc"));
-    assertThat(getFileNameWithoutExtension(get("/"),1,true),is(""));
+  public void testGetNameWithoutExtension_dotCount2(){
+    assertThat(getNameWithoutExtension(get("abc."),1,true),is("abc"));
+    assertThat(getNameWithoutExtension(get("abc."),2,true),is("abc"));
+    assertThat(getNameWithoutExtension(get("abc."),0,true),is("abc"));
+    assertThat(getNameWithoutExtension(get("/"),1,true),is(""));
     if(isWindows()){
-      assertThat(getFileNameWithoutExtension(get("C:/test.txt"),1,true),is("test"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),1,true),is("abc.tar"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),2,true),is("abc"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),3,true),is("abc"));
-      assertThat(getFileNameWithoutExtension(get("C:/abc.tar.gz"),0,true),is("abc"));
-      assertThat(getFileNameWithoutExtension(get("C:\\"),1,true),is(""));
+      assertThat(getNameWithoutExtension(get("C:/test.txt"),1,true),is("test"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),1,true),is("abc.tar"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),2,true),is("abc"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),3,true),is("abc"));
+      assertThat(getNameWithoutExtension(get("C:/abc.tar.gz"),0,true),is("abc"));
+      assertThat(getNameWithoutExtension(get("C:\\"),1,true),is(""));
     }
   }
 

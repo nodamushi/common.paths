@@ -305,7 +305,7 @@ public class NPaths{
    * @throws NullPointerException <code>path</code> is <code>null</code>
    * @since 1.0.0
    */
-  public static String getFileNameWithoutExtension(Path path)throws NullPointerException{
+  public static String getNameWithoutExtension(Path path)throws NullPointerException{
     String name=getFileName(path);
     int index=name.lastIndexOf('.');
     return index==-1?name:name.substring(0,index);
@@ -344,7 +344,7 @@ public class NPaths{
    * @throws NullPointerException <code>path</code> is <code>null</code>
    * @since 1.0.0
    */
-  public static String getFileNameWithoutExtension(Path path,int dotCount,boolean fuzzy)throws NullPointerException{
+  public static String getNameWithoutExtension(Path path,int dotCount,boolean fuzzy)throws NullPointerException{
     String name=getFileName(path);
     int index = indexOfExtension(path,dotCount,fuzzy);
     return index==-1?name:name.substring(0,index);
@@ -368,8 +368,8 @@ public class NPaths{
    * @throws NullPointerException <code>path</code> is <code>null</code>
    * @since 1.0.0
    */
-  public static String getFileNameWithoutExtension(Path path,int dotCount)throws NullPointerException{
-    return getFileNameWithoutExtension(path,dotCount,false);
+  public static String getNameWithoutExtension(Path path,int dotCount)throws NullPointerException{
+    return getNameWithoutExtension(path,dotCount,false);
   }
 
   /**
@@ -390,7 +390,7 @@ public class NPaths{
    * @since 1.0.0
    */
   public static Path removeExtension(Path path)throws NullPointerException{
-    return (path.getNameCount()==0)?path:sibling(path,getFileNameWithoutExtension(path));
+    return (path.getNameCount()==0)?path:sibling(path,getNameWithoutExtension(path));
   }
 
   /**
@@ -414,7 +414,7 @@ public class NPaths{
    * @since 1.0.0
    */
   public static Path removeExtension(Path path,int dotCount)throws NullPointerException{
-    return (path.getNameCount()==0)?path:sibling(path,getFileNameWithoutExtension(path,dotCount));
+    return (path.getNameCount()==0)?path:sibling(path,getNameWithoutExtension(path,dotCount));
   }
 
   /**
@@ -457,7 +457,7 @@ public class NPaths{
    * @since 1.0.0
    */
   public static Path removeExtension(Path path,int dotCount,boolean fuzzy)throws NullPointerException{
-    return (path.getNameCount()==0)?path:sibling(path,getFileNameWithoutExtension(path,dotCount,fuzzy));
+    return (path.getNameCount()==0)?path:sibling(path,getNameWithoutExtension(path,dotCount,fuzzy));
   }
 
   private static boolean isEmpty(String s){return s ==null || s.isEmpty();}
