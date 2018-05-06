@@ -9,6 +9,8 @@ There is only one class in this library,and this library's jar file size is only
 
 ## Methods
 
+Please see the Javadoc for details.
+
 ### null correspondence
 
 Path.getParent() method may return null. This library supplies some methods to avoid NullPointerException.
@@ -32,10 +34,10 @@ Path   csv   = NPaths.replaceExtension(path,"csv");// /etc/test.csv
 Path   csv0  = NPaths.insertFileName(csv,"_0");//  /etc/test_0.csv
 ```
 
-### Ignore BOM of UTF-8
+### Ignore BOM of UTF-8,UTF-16
 
 ```java
-try(BufferedReader r = NPaths.newBufferedReader(utf8File,StandardCharset.UTF_8)){
+try(BufferedReader r = NPaths.newBufferedReader(utfFile,StandardCharset.UTF_8)){
   // If BOM found at the beginning of the file,skip automatically it.
   String line = r.readLine();
 }
@@ -65,3 +67,12 @@ for(Path p:NPaths.iterator(path)){
   System.out.println(p);
 }
 ```
+
+
+## LICENSE
+
+Unlicense
+
+
+
+

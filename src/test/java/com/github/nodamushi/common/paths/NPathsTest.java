@@ -1,9 +1,9 @@
-package nodamushi.com.github.common.paths;
+package com.github.nodamushi.common.paths;
 
 
+import static com.github.nodamushi.common.paths.NPaths.*;
 import static java.nio.file.Paths.get;
 import static java.util.stream.Collectors.toList;
-import static nodamushi.com.github.common.paths.NPaths.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
@@ -23,8 +23,8 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import nodamushi.com.github.common.paths.NPaths.ItrOption;
-import nodamushi.com.github.common.paths.NPaths.Visit;
+import com.github.nodamushi.common.paths.NPaths.ItrOption;
+import com.github.nodamushi.common.paths.NPaths.Visit;
 
 public class NPathsTest{
   public static boolean isWindows(){
