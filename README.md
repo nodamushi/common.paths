@@ -1,9 +1,9 @@
 # common.paths
 
 A simple and small utilities for java.nio.file.Path.
-There are many useful libraries in the world, but do not you think that those jar files are large in size?
+There are many useful libraries in the world, but don't you think that the file sizes of those jar are large?
 
-There is only one class in this library,and this library's jar file size is only 13 kb.
+There is only one class in this library,and the file size of this library's jar is only 13 kb.
 
  
 
@@ -29,7 +29,7 @@ NPaths.resolve(path.getParent(), "b"); // "b"
 Path   path  = Paths.get("/etc/test.txt");
 
 String ext   = NPaths.getExtension(path); // "txt"
-String fname = NPaths.getFileNameWithoutExtension(path); // "test"
+String fname = NPaths.getNameWithoutExtension(path); // "test"
 Path   csv   = NPaths.replaceExtension(path,"csv");// /etc/test.csv
 Path   csv0  = NPaths.insertFileName(csv,"_0");//  /etc/test_0.csv
 ```
