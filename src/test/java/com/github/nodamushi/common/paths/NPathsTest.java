@@ -395,32 +395,36 @@ public class NPathsTest{
   private static Path RESOURCES=get("src/test/resources");
   @Test
   public void testNewBufferedReader()throws Exception{
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("empty.txt"),StandardCharsets.UTF_8)){
+    Charset UTF_8 = Charset.forName("utf-8");
+    Charset UTF_16 = Charset.forName("utf-16");
+    Charset UTF_16BE = Charset.forName("UTF-16BE");
+    Charset UTF_16LE = Charset.forName("UTF-16LE");
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("empty.txt"),UTF_8)){
       assertNull(r.readLine());
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM.txt"),StandardCharsets.UTF_8)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM.txt"),UTF_8)){
       assertThat(r.readLine(),is("aiueo"));
     }
 
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM.txt"),StandardCharsets.UTF_8)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM.txt"),UTF_8)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),StandardCharsets.UTF_16BE)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),UTF_16BE)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),StandardCharsets.UTF_16BE)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),UTF_16BE)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),StandardCharsets.UTF_16)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16BE.txt"),UTF_16)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),StandardCharsets.UTF_16)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16BE.txt"),UTF_16)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16LE.txt"),StandardCharsets.UTF_16LE)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("withBOM16LE.txt"),UTF_16LE)){
       assertThat(r.readLine(),is("aiueo"));
     }
-    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16LE.txt"),StandardCharsets.UTF_16LE)){
+    try(BufferedReader r=newBufferedReader(RESOURCES.resolve("noBOM16LE.txt"),UTF_16LE)){
       assertThat(r.readLine(),is("aiueo"));
     }
 

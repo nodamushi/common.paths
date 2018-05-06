@@ -795,9 +795,9 @@ public class NPaths{
       throws IOException,NullPointerException{
     if(charset==null)charset = Charset.defaultCharset();
     byte[] skip=
-        (charset == UTF_8)?new byte[]{(byte)0xEF,(byte)0xBB,(byte)0xBF}:
-        (charset == UTF_16 || charset == UTF_16BE)?new byte[]{(byte)0xFE,(byte)0xFF}:
-        (charset == UTF_16LE)?new byte[]{(byte)0xFF,(byte)0xFE}:
+        (charset.equals(UTF_8))?new byte[]{(byte)0xEF,(byte)0xBB,(byte)0xBF}:
+        (charset.equals(UTF_16) || charset.equals(UTF_16BE))?new byte[]{(byte)0xFE,(byte)0xFF}:
+        (charset.equals(UTF_16LE))?new byte[]{(byte)0xFF,(byte)0xFE}:
           null;
     if(skip!=null){
       if(!inputStream.markSupported()){
