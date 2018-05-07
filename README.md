@@ -1,11 +1,21 @@
 # common.paths
 
 A simple and small utilities for java.nio.file.Path.
+
 There are many useful libraries in the world, but don't you think that the file sizes of those jar are large?
 
 There is only one class in this library,and the file size of this library's jar is only 13 kb.
 
- 
+## Maven
+
+```xml
+<dependency>
+  <groupId>com.github.nodamushi</groupId>
+  <artifactId>common.paths</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 
 ## Methods
 
